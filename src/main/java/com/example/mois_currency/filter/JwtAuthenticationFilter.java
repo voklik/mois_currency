@@ -46,7 +46,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         headers.add("Authorization", token);
         HttpEntity<Boolean> request = new HttpEntity<>(headers);
         UriComponentsBuilder uriBuilder = UriComponentsBuilder
-                .fromHttpUrl("http://localhost:8080/verify");
+                .fromHttpUrl("http://localhost:8080/rest/api/currency/verify");
         ResponseEntity<Boolean> response = new RestTemplate()
                 .exchange(uriBuilder.toUriString(), HttpMethod.GET, request, Boolean.class);
         return Objects.requireNonNull(response.getBody());
