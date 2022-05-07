@@ -1,21 +1,14 @@
 package com.example.mois_currency.service;
 
 import com.example.mois_currency.domain.Currency;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import lombok.RequiredArgsConstructor;
-import lombok.var;
 import net.minidev.json.JSONObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Map;
 
 @Service
-
 public class CurrencyService {
 
     private RestTemplate restTemplate = new RestTemplate();
@@ -24,7 +17,7 @@ public class CurrencyService {
 
         String stringDate = date.getYear() + "" + date.getMonthValue() + "" + date.getDayOfMonth();
 
-        JSONObject currencies = restTemplate.getForObject("https://data.kurzy.cz/json/meny/b[1]den[" + date + "].json", JSONObject.class);
+        JSONObject currencies = restTemplate.getForObject("https://data.kurzy.cz/json/meny/b[1]den[" + stringDate + "].json", JSONObject.class);
 
         Gson gson = new Gson();
 
